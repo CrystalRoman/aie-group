@@ -59,3 +59,17 @@ def test_correlation_and_top_categories():
     city_table = top_cats["city"]
     assert "value" in city_table.columns
     assert len(city_table) <= 2
+
+
+def test_constant_column_flag():
+    df = pd.DataFrame(
+        {
+            "a": [1, 1, 1, 1],
+            "b": [1, 2, 3, 4],
+        }
+    )
+    summary = summarize_dataset(df)
+    missing_df = missing_table(df)
+    flags = compute_quality_flags(summary, missing_df)
+
+    assert flags["has_constant_columns"] is True

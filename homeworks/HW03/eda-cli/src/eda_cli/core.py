@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, List, Optional
 
 import pandas as pd
 from pandas.api import types as ptypes
@@ -40,19 +40,7 @@ class DatasetSummary:
         }
 
 
-def summarize_dataset(
-    df: pd.DataFrame,
-    example_values_per_column: int = 3,
-) -> DatasetSummary:
-    """
-    Полный обзор датасета по колонкам:
-    - количество строк/столбцов;
-    - типы;
-    - пропуски;
-    - количество уникальных;
-    - несколько примерных значений;
-    - базовые числовые статистики (для numeric).
-    """
+def summarize_dataset(df: pd.DataFrame) -> DatasetSummary:
     n_rows, n_cols = df.shape
     columns: List[ColumnSummary] = []
 
@@ -65,18 +53,14 @@ def summarize_dataset(
         missing_share = float(missing / n_rows) if n_rows > 0 else 0.0
         unique = int(s.nunique(dropna=True))
 
-        # Примерные значения выводим как строки
         examples = (
-            s.dropna().astype(str).unique()[:example_values_per_column].tolist()
+            s.dropna().astype(str).unique()[:3].tolist()
             if non_null > 0
             else []
         )
 
         is_numeric = bool(ptypes.is_numeric_dtype(s))
-        min_val: Optional[float] = None
-        max_val: Optional[float] = None
-        mean_val: Optional[float] = None
-        std_val: Optional[float] = None
+        min_val = max_val = mean_val = std_val = None
 
         if is_numeric and non_null > 0:
             min_val = float(s.min())
@@ -105,30 +89,17 @@ def summarize_dataset(
 
 
 def missing_table(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Таблица пропусков по колонкам: count/share.
-    """
     if df.empty:
         return pd.DataFrame(columns=["missing_count", "missing_share"])
 
     total = df.isna().sum()
     share = total / len(df)
-    result = (
-        pd.DataFrame(
-            {
-                "missing_count": total,
-                "missing_share": share,
-            }
-        )
-        .sort_values("missing_share", ascending=False)
-    )
-    return result
+    return pd.DataFrame(
+        {"missing_count": total, "missing_share": share}
+    ).sort_values("missing_share", ascending=False)
 
 
 def correlation_matrix(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Корреляция Пирсона для числовых колонок.
-    """
     numeric_df = df.select_dtypes(include="number")
     if numeric_df.empty:
         return pd.DataFrame()
@@ -140,84 +111,83 @@ def top_categories(
     max_columns: int = 5,
     top_k: int = 5,
 ) -> Dict[str, pd.DataFrame]:
-    """
-    Для категориальных/строковых колонок считает top-k значений.
-    Возвращает словарь: колонка -> DataFrame со столбцами value/count/share.
-    """
     result: Dict[str, pd.DataFrame] = {}
-    candidate_cols: List[str] = []
 
-    for name in df.columns:
+    for name in df.columns[:max_columns]:
         s = df[name]
-        if ptypes.is_object_dtype(s) or isinstance(s.dtype, pd.CategoricalDtype):
-            candidate_cols.append(name)
-
-    for name in candidate_cols[:max_columns]:
-        s = df[name]
-        vc = s.value_counts(dropna=True).head(top_k)
-        if vc.empty:
-            continue
-        share = vc / vc.sum()
-        table = pd.DataFrame(
-            {
-                "value": vc.index.astype(str),
-                "count": vc.values,
-                "share": share.values,
-            }
-        )
-        result[name] = table
+        if ptypes.is_object_dtype(s):
+            vc = s.value_counts(dropna=True).head(top_k)
+            if vc.empty:
+                continue
+            table = pd.DataFrame(
+                {
+                    "value": vc.index.astype(str),
+                    "count": vc.values,
+                    "share": vc.values / vc.sum(),
+                }
+            )
+            result[name] = table
 
     return result
 
 
-def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> Dict[str, Any]:
-    """
-    Простейшие эвристики «качества» данных:
-    - слишком много пропусков;
-    - подозрительно мало строк;
-    и т.п.
-    """
+def compute_quality_flags(
+    summary: DatasetSummary,
+    missing_df: pd.DataFrame,
+) -> Dict[str, Any]:
     flags: Dict[str, Any] = {}
+
     flags["too_few_rows"] = summary.n_rows < 100
     flags["too_many_columns"] = summary.n_cols > 100
 
-    max_missing_share = float(missing_df["missing_share"].max()) if not missing_df.empty else 0.0
+    max_missing_share = (
+        float(missing_df["missing_share"].max())
+        if not missing_df.empty
+        else 0.0
+    )
     flags["max_missing_share"] = max_missing_share
     flags["too_many_missing"] = max_missing_share > 0.5
 
-    # Простейший «скор» качества
+    flags["has_constant_columns"] = any(
+        col.unique <= 1 for col in summary.columns
+    )
+
+    flags["has_many_zero_values"] = any(
+        col.is_numeric and col.non_null > 0 and col.min == 0.0 and col.mean == 0.0
+        for col in summary.columns
+    )
+
     score = 1.0
-    score -= max_missing_share  # чем больше пропусков, тем хуже
-    if summary.n_rows < 100:
+    score -= max_missing_share
+    if flags["too_few_rows"]:
         score -= 0.2
-    if summary.n_cols > 100:
+    if flags["too_many_columns"]:
+        score -= 0.1
+    if flags["has_constant_columns"]:
+        score -= 0.1
+    if flags["has_many_zero_values"]:
         score -= 0.1
 
-    score = max(0.0, min(1.0, score))
-    flags["quality_score"] = score
-
+    flags["quality_score"] = max(0.0, min(1.0, score))
     return flags
 
 
 def flatten_summary_for_print(summary: DatasetSummary) -> pd.DataFrame:
-    """
-    Превращает DatasetSummary в табличку для более удобного вывода.
-    """
-    rows: List[Dict[str, Any]] = []
-    for col in summary.columns:
-        rows.append(
+    return pd.DataFrame(
+        [
             {
-                "name": col.name,
-                "dtype": col.dtype,
-                "non_null": col.non_null,
-                "missing": col.missing,
-                "missing_share": col.missing_share,
-                "unique": col.unique,
-                "is_numeric": col.is_numeric,
-                "min": col.min,
-                "max": col.max,
-                "mean": col.mean,
-                "std": col.std,
+                "name": c.name,
+                "dtype": c.dtype,
+                "non_null": c.non_null,
+                "missing": c.missing,
+                "missing_share": c.missing_share,
+                "unique": c.unique,
+                "is_numeric": c.is_numeric,
+                "min": c.min,
+                "max": c.max,
+                "mean": c.mean,
+                "std": c.std,
             }
-        )
-    return pd.DataFrame(rows)
+            for c in summary.columns
+        ]
+    )
