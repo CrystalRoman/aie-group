@@ -57,6 +57,12 @@ def report(
     top_k_categories: int = typer.Option(5, help="Top-K категорий"),
     title: str = typer.Option("EDA-отчёт", help="Заголовок отчёта"),
     json_summary: bool = typer.Option(False, help="Сохранить summary.json"),
+    min_quality_score: float = typer.Option(
+        0.5, help="Минимально допустимое качество данных"
+    ),
+    fail_on_low_quality: bool = typer.Option(
+        False, help="Завершить с ошибкой, если качество ниже порога"
+    ),
 ) -> None:
     out_root = Path(out_dir)
     out_root.mkdir(parents=True, exist_ok=True)
@@ -70,6 +76,11 @@ def report(
     top_cats = top_categories(df, top_k=top_k_categories)
 
     quality_flags = compute_quality_flags(summary, missing_df)
+
+    if fail_on_low_quality and quality_flags["quality_score"] < min_quality_score:
+        raise typer.Exit(
+            code=1,
+        )
 
     summary_df.to_csv(out_root / "summary.csv", index=False)
     if not missing_df.empty:
