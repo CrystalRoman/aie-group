@@ -13,7 +13,9 @@
 ## 2. Protocol
 
 Разбиение: 80% train, 20% test, `random_state=42`, `stratify=y` для сохранения пропорций классов
+
 Подбор: 3 фолда, StratifiedKFold, оптимизация по ROC-AUC (уместно для несбалансированных данных)
+
 Метрики: accuracy, F1, ROC-AUC, Precision, Recall, Average Precision
 - ROC-AUC - основная метрика, так как устойчива к дисбалансу классов
 - F1 и Average Precision важны для оценки качества на миноритарном классе
