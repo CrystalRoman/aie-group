@@ -1,0 +1,47 @@
+{
+  "Dummy": {
+    "accuracy": 0.9508,
+    "f1": 0.0,
+    "precision": 0.0,
+    "recall": 0.0
+  },
+  "LogisticRegression": {
+    "accuracy": 0.9632,
+    "f1": 0.42857142857142855,
+    "precision": 0.9078947368421053,
+    "recall": 0.2804878048780488,
+    "roc_auc": 0.8339874679773299
+  },
+  "DecisionTree": {
+    "accuracy": 0.9664,
+    "f1": 0.5670103092783505,
+    "precision": 0.7746478873239436,
+    "recall": 0.44715447154471544,
+    "roc_auc": 0.8187384350705098,
+    "average_precision": 0.5175848899771962
+  },
+  "RandomForest": {
+    "accuracy": 0.9632,
+    "f1": 0.4064516129032258,
+    "precision": 0.984375,
+    "recall": 0.25609756097560976,
+    "roc_auc": 0.8927843390760369,
+    "average_precision": 0.7281406589644392
+  },
+  "HistGradientBoosting": {
+    "accuracy": 0.9784,
+    "f1": 0.7258883248730964,
+    "precision": 0.9662162162162162,
+    "recall": 0.5813008130081301,
+    "roc_auc": 0.9002004302752324,
+    "average_precision": 0.7794833642675858
+  },
+  "LogisticRegression_Scaled": {
+    "accuracy": 0.9528,
+    "f1": 0.2080536912751678,
+    "precision": 0.5961538461538461,
+    "recall": 0.12601626016260162,
+    "roc_auc": 0.8213100820532816,
+    "average_precision": 0.28411361390868844
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "model_name": "HistGradientBoosting",
+  "timestamp": "2026-01-17 15:17:21",
+  "metrics": {
+    "accuracy": 0.9784,
+    "f1": 0.7258883248730964,
+    "precision": 0.9662162162162162,
+    "recall": 0.5813008130081301,
+    "roc_auc": 0.9002004302752324,
+    "average_precision": 0.7794833642675858
+  },
+  "parameters": {
+    "categorical_features": "warn",
+    "class_weight": null,
+    "early_stopping": "auto",
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 0.1,
+    "loss": "log_loss",
+    "max_bins": 255,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "max_iter": 100,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 20,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "random_state": 42,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  }
+}
