@@ -1,0 +1,17 @@
+{
+  "experiment_id": "E4",
+  "dataset": "EMNIST",
+  "seed": 42,
+  "hidden_sizes": [
+    256,
+    128
+  ],
+  "dropout_p": 0.0,
+  "use_batchnorm": true,
+  "n_classes": 47,
+  "optimizer": "Adam",
+  "lr": 0.001,
+  "momentum": 0.0,
+  "weight_decay": 0.0,
+  "epochs_trained": 6
+}
