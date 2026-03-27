@@ -1,0 +1,16 @@
+{
+  "experiment_id": "C4",
+  "dataset": "CIFAR100",
+  "architecture": "ResNet18",
+  "train_transform": "resnet_train_tf",
+  "eval_transform": "resnet_eval_tf",
+  "frozen_backbone": true,
+  "trainable_parts": [
+    "layer4",
+    "fc"
+  ],
+  "optimizer": "Adam",
+  "lr": 0.0001,
+  "epochs": 4,
+  "seed": 42
+}
