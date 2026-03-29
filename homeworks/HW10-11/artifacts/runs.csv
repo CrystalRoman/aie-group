@@ -1,7 +1,7 @@
-experiment_id,task,dataset,seed,model_summary,optimizer,lr,epochs_trained,best_val_accuracy,test_accuracy,precision,recall,mean_iou,notes,best_epoch
-C1,classification,CIFAR100,42,SimpleCNN,Adam,0.001,5,0.26,,,,,simple CNN without augmentations,5.0
-C2,classification,CIFAR100,42,SimpleCNN,Adam,0.001,5,0.2489,,,,,same CNN with augmentations,5.0
-C3,classification,CIFAR100,42,ResNet,Adam,0.001,3,0.5083,,,,,"ResNet18 pretrained, frozen backbone, train head only",3.0
-C4,classification,CIFAR100,42,ResNet,Adam,0.0001,3,0.6537,0.6531,,,,"ResNet18 pretrained, layer4 + fc trainable | selected as best model",3.0
-S1,segmentation,Oxford-IIIT Pet test,42,DeepLabV3_MobileNet_V3_Large,,,0,,,,,0.6415290441212462,score_threshold=0.3,
-S2,segmentation,Oxford-IIIT Pet test,42,DeepLabV3_MobileNet_V3_Large,,,0,,,,,0.6532562940833738,score_threshold=0.6,
+experiment_id,task,track,dataset,seed,model_summary,optimizer,lr,epochs_trained,best_val_accuracy,test_accuracy,precision,recall,mean_iou,notes,best_epoch
+C1,classification,classification,CIFAR100,42,SimpleCNN,Adam,0.001,5,0.26,,,,,simple CNN without augmentations,5.0
+C2,classification,classification,CIFAR100,42,SimpleCNN,Adam,0.001,5,0.2489,,,,,same CNN with augmentations,5.0
+C3,classification,classification,CIFAR100,42,ResNet,Adam,0.001,3,0.5083,,,,,"ResNet18 pretrained, frozen backbone, train head only",3.0
+C4,classification,classification,CIFAR100,42,ResNet,Adam,0.0001,3,0.6537,0.6531,,,,"ResNet18 pretrained, layer4 + fc trainable | selected as best model",3.0
+V1,segmentation,segmentation,OxfordIIITPet,42,DeepLabV3_MobileNet_V3_Large,,,0,,,,,0.6415290441212462,V1: score_threshold=0.3,
+V2,segmentation,segmentation,OxfordIIITPet,42,DeepLabV3_MobileNet_V3_Large,,,0,,,,,0.6532562940833738,V2: score_threshold=0.6,
