@@ -1,0 +1,11 @@
+query,expected_source,retrieved_sources,hit_at_k,rank_of_first_relevant,recall_at_k
+Как рассчитывается итоговая оценка на курсе?,grading_policy,"grading_policy, technical_requirements, payments_refunds, plagiarism_policy",1,1.0,1.0
+Что считается плагиатом и какие последствия бывают?,plagiarism_policy,"plagiarism_policy, community_rules, grading_policy, learning_format",1,1.0,1.0
+Можно ли вернуть деньги после старта обучения?,payments_refunds,"technical_requirements, admission_rules, deadlines_resubmissions",0,,0.0
+Какие условия нужны для получения сертификата?,"certificates, final_project","technical_requirements, plagiarism_policy, payments_refunds, certificates",1,4.0,0.5
+Какие технические требования к ноутбуку и программам?,technical_requirements,"admission_rules, mentorship_support, community_rules, final_project",0,,0.0
+Как запросить переоткрытие задания после жесткого дедлайна?,deadlines_resubmissions,"deadlines_resubmissions, plagiarism_policy, certificates",1,1.0,1.0
+Как проходят итоговый экзамен и проверка личности?,exam_rules,"grading_policy, exam_rules, learning_format",1,2.0,1.0
+"К кому обращаться по содержанию задания, а к кому — по организационным вопросам?",mentorship_support,"mentorship_support, admission_rules, final_project, learning_format",1,1.0,1.0
+Где задавать вопросы по курсу и какие правила общения действуют?,"community_rules, mentorship_support","mentorship_support, community_rules, final_project",1,1.0,1.0
+Что важнее для финального результата: домашние задания или итоговый проект?,"grading_policy, final_project","grading_policy, final_project, certificates",1,1.0,1.0

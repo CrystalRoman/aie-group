@@ -1,0 +1,5 @@
+query,before_retrieved_sources,after_retrieved_sources,changed
+Можно ли заморозить обучение на несколько недель?,"technical_requirements, exam_rules, admission_rules, learning_format","technical_requirements, freeze_policy, exam_rules, admission_rules",True
+В какие часы проходят открытые консультации?,"learning_format, mentorship_support, deadlines_resubmissions","office_hours, learning_format, mentorship_support",True
+Разрешены ли групповые итоговые проекты?,"technical_requirements, community_rules, admission_rules, plagiarism_policy","technical_requirements, community_rules, deadlines_resubmissions",True
+Что происходит с дедлайнами во время заморозки обучения?,"exam_rules, admission_rules, community_rules","freeze_policy, exam_rules, admission_rules",True
