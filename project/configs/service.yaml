@@ -1,4 +1,4 @@
-training_config_path: configs/training_transformer_unet.yaml
+training_config_path: configs/training_unet.yaml
 predictions_dir: artifacts/service_predictions
 device: cuda
 host: 0.0.0.0
