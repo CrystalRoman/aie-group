@@ -1,0 +1,101 @@
+{
+  "train_val_summary": {
+    "num_samples": 1107,
+    "num_positive": 1107,
+    "num_negative": 0,
+    "positive_ratio": 1.0
+  },
+  "test_summary": {
+    "num_samples": 209,
+    "num_positive": 209,
+    "num_negative": 0,
+    "positive_ratio": 1.0
+  },
+  "best_model_path": "artifacts/transformer_unet_positive_tversky/models/best_transformer_unet.pt",
+  "threshold_search": {
+    "best_threshold": 0.1,
+    "best_dice": 0.5747546354929606,
+    "scores": [
+      {
+        "threshold": 0.1,
+        "dice": 0.5747546354929606
+      },
+      {
+        "threshold": 0.2,
+        "dice": 0.5745372928324199
+      },
+      {
+        "threshold": 0.3,
+        "dice": 0.5744475424289703
+      },
+      {
+        "threshold": 0.4,
+        "dice": 0.5741525264013381
+      },
+      {
+        "threshold": 0.5,
+        "dice": 0.5736538171768188
+      },
+      {
+        "threshold": 0.6,
+        "dice": 0.5729656772954124
+      },
+      {
+        "threshold": 0.7,
+        "dice": 0.5724319829827264
+      },
+      {
+        "threshold": 0.8,
+        "dice": 0.5717237378869738
+      },
+      {
+        "threshold": 0.9,
+        "dice": 0.5698605378468832
+      }
+    ]
+  },
+  "selected_threshold": 0.1,
+  "train_size": 940,
+  "val_size": 167,
+  "test_size": 209,
+  "used_external_test_csv": true,
+  "train_csv_path": "data_full/stage_1_train_images.csv",
+  "test_csv_path": "data_full/stage_1_test_images.csv",
+  "positive_only": true,
+  "min_mask_coverage": 0.005,
+  "loss_name": "tversky",
+  "val_metrics": {
+    "all": {
+      "count": 167,
+      "dice": 0.5741098320165348,
+      "iou": 0.428914230006603
+    },
+    "positive_only": {
+      "count": 167,
+      "dice": 0.5741098320165348,
+      "iou": 0.428914230006603
+    },
+    "negative_only": {
+      "count": 0,
+      "dice": null,
+      "iou": null
+    }
+  },
+  "test_metrics": {
+    "all": {
+      "count": 209,
+      "dice": 0.543727662837049,
+      "iou": 0.4087792984048073
+    },
+    "positive_only": {
+      "count": 209,
+      "dice": 0.543727662837049,
+      "iou": 0.4087792984048073
+    },
+    "negative_only": {
+      "count": 0,
+      "dice": null,
+      "iou": null
+    }
+  }
+}

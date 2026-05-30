@@ -1,0 +1,38 @@
+2026-05-30 14:02:48,776 | INFO | train | STEP 1/11: Config loaded from configs\_tmp_smoke.yaml
+2026-05-30 14:02:48,835 | INFO | train | Random seed set to 42
+2026-05-30 14:02:48,835 | INFO | train | STEP 2/11: Paths and training config parsed
+2026-05-30 14:02:48,835 | INFO | train | train_csv_path=data/stage_1_train_images.csv
+2026-05-30 14:02:48,836 | INFO | train | test_csv_path=data/stage_1_test_images.csv
+2026-05-30 14:02:48,836 | INFO | train | images_dir=data/png_images
+2026-05-30 14:02:48,836 | INFO | train | masks_dir=data/png_masks
+2026-05-30 14:02:48,836 | INFO | train | artifacts_dir=artifacts/tmp_smoke
+2026-05-30 14:02:48,836 | INFO | train | model_name=unet | requested_device=cuda | epochs=3 | batch_size=2
+2026-05-30 14:02:48,836 | INFO | train | positive_only=False | min_mask_coverage=0.000000 | loss_name=bce_dice
+2026-05-30 14:02:48,836 | INFO | train | STEP 3/11: Building train/val dataframe...
+2026-05-30 14:02:49,554 | INFO | train | Train/val dataframe built successfully. Rows after filtering: 102
+2026-05-30 14:02:49,554 | INFO | train | Train/val dataset summary: {'num_samples': 102, 'num_positive': 71, 'num_negative': 31, 'positive_ratio': 0.696078431372549}
+2026-05-30 14:02:49,555 | INFO | train | STEP 4/11: Building external test dataframe...
+2026-05-30 14:02:49,661 | INFO | train | External test dataframe built successfully. Rows after filtering: 102
+2026-05-30 14:02:49,661 | INFO | train | External test summary: {'num_samples': 102, 'num_positive': 21, 'num_negative': 81, 'positive_ratio': 0.20588235294117646}
+2026-05-30 14:02:49,662 | INFO | train | STEP 5/11: Splitting train_csv into train/val only...
+2026-05-30 14:02:49,664 | INFO | train | Split created: train=86 | val=16 | test=102
+2026-05-30 14:02:49,664 | INFO | train | STEP 6/11: Creating Dataset objects...
+2026-05-30 14:02:49,666 | INFO | train | Datasets ready: train=86 | val=16 | test=102
+2026-05-30 14:02:49,666 | INFO | train | STEP 7/11: Creating model...
+2026-05-30 14:02:49,672 | WARNING | train | CUDA was requested but is not available. Falling back to CPU.
+2026-05-30 14:02:49,672 | INFO | train | STEP 8/11: Creating DataLoaders...
+2026-05-30 14:02:49,672 | INFO | train | DataLoaders ready. train_batches=43 | val_batches=8 | test_batches=51
+2026-05-30 14:02:49,673 | INFO | train | Model created and moved to device: cpu
+2026-05-30 14:02:49,674 | INFO | train | STEP 9/11: Starting training loop...
+2026-05-30 14:02:49,674 | INFO | train | Training params: loss=bce_dice | lr=0.0001 | mixed_precision=True
+2026-05-30 14:03:21,009 | INFO | train | Training loop finished. History saved to artifacts\tmp_smoke\metrics\history_unet.csv
+2026-05-30 14:03:21,010 | INFO | train | Loading best checkpoint from artifacts\tmp_smoke\models\best_unet.pt for final evaluation...
+2026-05-30 14:03:23,391 | INFO | train | Best threshold selected on validation: 0.5000
+2026-05-30 14:03:23,391 | INFO | train | STEP 10/11: Evaluating best checkpoint on val/test with selected threshold...
+2026-05-30 14:03:32,576 | INFO | train | Validation metrics: {'all': {'count': 16, 'dice': 0.010623575348881807, 'iou': 0.005395828051996452}, 'positive_only': {'count': 11, 'dice': 0.015452473233877257, 'iou': 0.007848477165680379}, 'negative_only': {'count': 5, 'dice': 1.891814678002535e-12, 'iou': 1.891814678002535e-12}}
+2026-05-30 14:03:32,578 | INFO | train | Test metrics: {'all': {'count': 102, 'dice': 0.006145630492268637, 'iou': 0.003237316857910656}, 'positive_only': {'count': 21, 'dice': 0.02985020524023899, 'iou': 0.015724110444785937}, 'negative_only': {'count': 81, 'dice': 2.054102254641016e-12, 'iou': 2.054102254641016e-12}}
+2026-05-30 14:03:37,731 | INFO | train | STEP 11/11: Saving split CSV files and figures...
+2026-05-30 14:03:40,602 | INFO | train | mask_coverage column is missing. Coverage plot will be skipped.
+2026-05-30 14:03:40,602 | INFO | train | Training finished. Best model saved to artifacts\tmp_smoke\models\best_unet.pt
+2026-05-30 14:03:40,602 | INFO | train | Figures saved to artifacts\tmp_smoke\figures
+2026-05-30 14:03:40,603 | INFO | train | Logs saved to artifacts\tmp_smoke\logs

@@ -1,0 +1,38 @@
+2026-05-29 11:44:03,216 | INFO | train | STEP 1/11: Config loaded from configs/training_transformer_unet.yaml
+2026-05-29 11:44:03,233 | INFO | train | Random seed set to 42
+2026-05-29 11:44:03,238 | INFO | train | STEP 2/11: Paths and training config parsed
+2026-05-29 11:44:03,240 | INFO | train | train_csv_path=data_full/stage_1_train_images.csv
+2026-05-29 11:44:03,241 | INFO | train | test_csv_path=data_full/stage_1_test_images.csv
+2026-05-29 11:44:03,244 | INFO | train | images_dir=data_full/png_images
+2026-05-29 11:44:03,245 | INFO | train | masks_dir=data_full/png_masks
+2026-05-29 11:44:03,248 | INFO | train | artifacts_dir=artifacts/transformer_unet_positive_tversky
+2026-05-29 11:44:03,250 | INFO | train | model_name=transformer_unet | requested_device=cuda | epochs=200 | batch_size=8
+2026-05-29 11:44:03,251 | INFO | train | positive_only=True | min_mask_coverage=0.005000 | loss_name=tversky
+2026-05-29 11:44:03,253 | INFO | train | STEP 3/11: Building train/val dataframe...
+2026-05-29 11:44:35,307 | INFO | train | train_val positive_only filter applied: 2422 -> 1107 rows
+2026-05-29 11:44:35,318 | INFO | train | Train/val dataframe built successfully. Rows after filtering: 1107
+2026-05-29 11:44:35,324 | INFO | train | Train/val dataset summary: {'num_samples': 1107, 'num_positive': 1107, 'num_negative': 0, 'positive_ratio': 1.0}
+2026-05-29 11:44:35,326 | INFO | train | STEP 4/11: Building external test dataframe...
+2026-05-29 11:44:40,801 | INFO | train | test positive_only filter applied: 1291 -> 209 rows
+2026-05-29 11:44:40,806 | INFO | train | External test dataframe built successfully. Rows after filtering: 209
+2026-05-29 11:44:40,808 | INFO | train | External test summary: {'num_samples': 209, 'num_positive': 209, 'num_negative': 0, 'positive_ratio': 1.0}
+2026-05-29 11:44:40,810 | INFO | train | STEP 5/11: Splitting train_csv into train/val only...
+2026-05-29 11:44:40,816 | INFO | train | Split created: train=940 | val=167 | test=209
+2026-05-29 11:44:40,818 | INFO | train | STEP 6/11: Creating Dataset objects...
+2026-05-29 11:44:40,820 | INFO | train | Datasets ready: train=940 | val=167 | test=209
+2026-05-29 11:44:40,821 | INFO | train | STEP 7/11: Creating model...
+2026-05-29 11:44:49,131 | INFO | train | STEP 8/11: Creating DataLoaders...
+2026-05-29 11:44:49,136 | INFO | train | DataLoaders ready. train_batches=118 | val_batches=21 | test_batches=27
+2026-05-29 11:44:49,413 | INFO | train | Model created and moved to device: cuda
+2026-05-29 11:44:49,417 | INFO | train | STEP 9/11: Starting training loop...
+2026-05-29 11:44:49,419 | INFO | train | Training params: loss=tversky | lr=0.0001 | mixed_precision=True
+2026-05-29 12:36:32,167 | INFO | train | Training loop finished. History saved to artifacts/transformer_unet_positive_tversky/metrics/history_transformer_unet.csv
+2026-05-29 12:36:32,170 | INFO | train | Loading best checkpoint from artifacts/transformer_unet_positive_tversky/models/best_transformer_unet.pt for final evaluation...
+2026-05-29 12:37:50,310 | INFO | train | Best threshold selected on validation: 0.1000
+2026-05-29 12:37:50,313 | INFO | train | STEP 10/11: Evaluating best checkpoint on val/test with selected threshold...
+2026-05-29 12:38:09,469 | INFO | train | Validation metrics: {'all': {'count': 167, 'dice': 0.5741098320165348, 'iou': 0.428914230006603}, 'positive_only': {'count': 167, 'dice': 0.5741098320165348, 'iou': 0.428914230006603}, 'negative_only': {'count': 0, 'dice': None, 'iou': None}}
+2026-05-29 12:38:09,472 | INFO | train | Test metrics: {'all': {'count': 209, 'dice': 0.543727662837049, 'iou': 0.4087792984048073}, 'positive_only': {'count': 209, 'dice': 0.543727662837049, 'iou': 0.4087792984048073}, 'negative_only': {'count': 0, 'dice': None, 'iou': None}}
+2026-05-29 12:38:13,711 | INFO | train | STEP 11/11: Saving split CSV files and figures...
+2026-05-29 12:38:15,638 | INFO | train | Training finished. Best model saved to artifacts/transformer_unet_positive_tversky/models/best_transformer_unet.pt
+2026-05-29 12:38:15,641 | INFO | train | Figures saved to artifacts/transformer_unet_positive_tversky/figures
+2026-05-29 12:38:15,647 | INFO | train | Logs saved to artifacts/transformer_unet_positive_tversky/logs

@@ -1,0 +1,38 @@
+2026-05-29 11:36:53,816 | INFO | train | STEP 1/11: Config loaded from configs/training_attention_unet.yaml
+2026-05-29 11:36:53,824 | INFO | train | Random seed set to 42
+2026-05-29 11:36:53,826 | INFO | train | STEP 2/11: Paths and training config parsed
+2026-05-29 11:36:53,827 | INFO | train | train_csv_path=data_full/stage_1_train_images.csv
+2026-05-29 11:36:53,829 | INFO | train | test_csv_path=data_full/stage_1_test_images.csv
+2026-05-29 11:36:53,831 | INFO | train | images_dir=data_full/png_images
+2026-05-29 11:36:53,832 | INFO | train | masks_dir=data_full/png_masks
+2026-05-29 11:36:53,834 | INFO | train | artifacts_dir=artifacts/attention_unet_positive_tversky
+2026-05-29 11:36:53,836 | INFO | train | model_name=attention_unet | requested_device=cuda | epochs=200 | batch_size=8
+2026-05-29 11:36:53,837 | INFO | train | positive_only=True | min_mask_coverage=0.005000 | loss_name=tversky
+2026-05-29 11:36:53,838 | INFO | train | STEP 3/11: Building train/val dataframe...
+2026-05-29 11:37:25,621 | INFO | train | train_val positive_only filter applied: 2422 -> 1107 rows
+2026-05-29 11:37:25,623 | INFO | train | Train/val dataframe built successfully. Rows after filtering: 1107
+2026-05-29 11:37:25,626 | INFO | train | Train/val dataset summary: {'num_samples': 1107, 'num_positive': 1107, 'num_negative': 0, 'positive_ratio': 1.0}
+2026-05-29 11:37:25,634 | INFO | train | STEP 4/11: Building external test dataframe...
+2026-05-29 11:37:31,592 | INFO | train | test positive_only filter applied: 1291 -> 209 rows
+2026-05-29 11:37:31,594 | INFO | train | External test dataframe built successfully. Rows after filtering: 209
+2026-05-29 11:37:31,596 | INFO | train | External test summary: {'num_samples': 209, 'num_positive': 209, 'num_negative': 0, 'positive_ratio': 1.0}
+2026-05-29 11:37:31,598 | INFO | train | STEP 5/11: Splitting train_csv into train/val only...
+2026-05-29 11:37:31,606 | INFO | train | Split created: train=940 | val=167 | test=209
+2026-05-29 11:37:31,611 | INFO | train | STEP 6/11: Creating Dataset objects...
+2026-05-29 11:37:31,614 | INFO | train | Datasets ready: train=940 | val=167 | test=209
+2026-05-29 11:37:31,616 | INFO | train | STEP 7/11: Creating model...
+2026-05-29 11:37:31,849 | INFO | train | STEP 8/11: Creating DataLoaders...
+2026-05-29 11:37:31,853 | INFO | train | DataLoaders ready. train_batches=118 | val_batches=21 | test_batches=27
+2026-05-29 11:37:32,113 | INFO | train | Model created and moved to device: cuda
+2026-05-29 11:37:32,118 | INFO | train | STEP 9/11: Starting training loop...
+2026-05-29 11:37:32,120 | INFO | train | Training params: loss=tversky | lr=0.0001 | mixed_precision=True
+2026-05-29 12:32:53,569 | INFO | train | Training loop finished. History saved to artifacts/attention_unet_positive_tversky/metrics/history_attention_unet.csv
+2026-05-29 12:32:53,571 | INFO | train | Loading best checkpoint from artifacts/attention_unet_positive_tversky/models/best_attention_unet.pt for final evaluation...
+2026-05-29 12:34:07,521 | INFO | train | Best threshold selected on validation: 0.1000
+2026-05-29 12:34:07,524 | INFO | train | STEP 10/11: Evaluating best checkpoint on val/test with selected threshold...
+2026-05-29 12:34:25,919 | INFO | train | Validation metrics: {'all': {'count': 167, 'dice': 0.5089436869655171, 'iou': 0.3727874279564099}, 'positive_only': {'count': 167, 'dice': 0.5089436869655171, 'iou': 0.3727874279564099}, 'negative_only': {'count': 0, 'dice': None, 'iou': None}}
+2026-05-29 12:34:25,922 | INFO | train | Test metrics: {'all': {'count': 209, 'dice': 0.47315732434861935, 'iou': 0.34729372801339214}, 'positive_only': {'count': 209, 'dice': 0.47315732434861935, 'iou': 0.34729372801339214}, 'negative_only': {'count': 0, 'dice': None, 'iou': None}}
+2026-05-29 12:34:30,065 | INFO | train | STEP 11/11: Saving split CSV files and figures...
+2026-05-29 12:34:31,541 | INFO | train | Training finished. Best model saved to artifacts/attention_unet_positive_tversky/models/best_attention_unet.pt
+2026-05-29 12:34:31,543 | INFO | train | Figures saved to artifacts/attention_unet_positive_tversky/figures
+2026-05-29 12:34:31,567 | INFO | train | Logs saved to artifacts/attention_unet_positive_tversky/logs

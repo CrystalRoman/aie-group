@@ -4,9 +4,18 @@ __pycache__/
 *.pyc
 .python-version
 
+# Jupyter / pytest
+.ipynb_checkpoints/
+.pytest_cache/
+
+# OS
+.DS_Store
+
 homeworks/HW03/eda-cli/reports_*/
 homeworks/HW03/eda-cli/*.log
 
 # IDE
 .vscode/
 .idea/
+
+project/artifacts/**/models/

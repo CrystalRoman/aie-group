@@ -1,0 +1,85 @@
+{
+  "train_val_summary": {
+    "num_samples": 102,
+    "num_positive": 71,
+    "num_negative": 31,
+    "positive_ratio": 0.696078431372549
+  },
+  "test_summary": {
+    "num_samples": 102,
+    "num_positive": 21,
+    "num_negative": 81,
+    "positive_ratio": 0.20588235294117646
+  },
+  "best_model_path": "artifacts\\tmp_smoke\\models\\best_unet.pt",
+  "threshold_search": {
+    "best_threshold": 0.5,
+    "best_dice": 0.01062357539194636,
+    "scores": [
+      {
+        "threshold": 0.3,
+        "dice": 0.008338014304172248
+      },
+      {
+        "threshold": 0.4,
+        "dice": 0.00833986401266884
+      },
+      {
+        "threshold": 0.5,
+        "dice": 0.01062357539194636
+      },
+      {
+        "threshold": 0.6,
+        "dice": 0.007484822257538326
+      },
+      {
+        "threshold": 0.7,
+        "dice": 0.0006944449354981397
+      }
+    ]
+  },
+  "selected_threshold": 0.5,
+  "train_size": 86,
+  "val_size": 16,
+  "test_size": 102,
+  "used_external_test_csv": true,
+  "train_csv_path": "data/stage_1_train_images.csv",
+  "test_csv_path": "data/stage_1_test_images.csv",
+  "positive_only": false,
+  "min_mask_coverage": 0.0,
+  "loss_name": "bce_dice",
+  "val_metrics": {
+    "all": {
+      "count": 16,
+      "dice": 0.010623575348881807,
+      "iou": 0.005395828051996452
+    },
+    "positive_only": {
+      "count": 11,
+      "dice": 0.015452473233877257,
+      "iou": 0.007848477165680379
+    },
+    "negative_only": {
+      "count": 5,
+      "dice": 1.891814678002535e-12,
+      "iou": 1.891814678002535e-12
+    }
+  },
+  "test_metrics": {
+    "all": {
+      "count": 102,
+      "dice": 0.006145630492268637,
+      "iou": 0.003237316857910656
+    },
+    "positive_only": {
+      "count": 21,
+      "dice": 0.02985020524023899,
+      "iou": 0.015724110444785937
+    },
+    "negative_only": {
+      "count": 81,
+      "dice": 2.054102254641016e-12,
+      "iou": 2.054102254641016e-12
+    }
+  }
+}

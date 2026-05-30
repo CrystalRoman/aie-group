@@ -1,0 +1,36 @@
+seed: 42
+
+paths:
+  train_csv_path: data/stage_1_train_images.csv
+  test_csv_path: data/stage_1_test_images.csv
+  images_dir: data/png_images
+  masks_dir: data/png_masks
+  artifacts_dir: artifacts/unet_positive_tversky
+
+data:
+  image_size: 256
+  batch_size: 8
+  num_workers: 0
+  positive_only: true
+  min_mask_coverage: 0.005
+  val_size: 0.15
+  test_size: 0.15
+  drop_missing_positive_masks: true
+  num_prediction_examples: 8
+  prediction_examples_split: test
+  prediction_examples_positive_only: true
+
+training:
+  model_name: unet
+  base_channels: 32
+  loss_name: tversky
+  learning_rate: 0.0001
+  weight_decay: 1.0e-05
+  num_epochs: 200
+  threshold: 0.5
+  threshold_candidates: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+  scheduler_factor: 0.5
+  scheduler_patience: 3
+  mixed_precision: true
+  early_stopping_patience: 15
+  device: cuda

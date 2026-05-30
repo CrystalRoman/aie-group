@@ -1,0 +1,17 @@
+image_name,image_path,mask_path,has_pneumo
+26_train_1_.png,data\png_images\26_train_1_.png,data\png_masks\26_train_1_.png,1
+65_train_1_.png,data\png_images\65_train_1_.png,data\png_masks\65_train_1_.png,1
+68_train_1_.png,data\png_images\68_train_1_.png,data\png_masks\68_train_1_.png,1
+73_train_1_.png,data\png_images\73_train_1_.png,data\png_masks\73_train_1_.png,1
+82_train_1_.png,data\png_images\82_train_1_.png,data\png_masks\82_train_1_.png,1
+84_train_1_.png,data\png_images\84_train_1_.png,data\png_masks\84_train_1_.png,1
+72_train_1_.png,data\png_images\72_train_1_.png,data\png_masks\72_train_1_.png,1
+14_train_0_.png,data\png_images\14_train_0_.png,data\png_masks\14_train_0_.png,0
+63_train_1_.png,data\png_images\63_train_1_.png,data\png_masks\63_train_1_.png,1
+96_train_0_.png,data\png_images\96_train_0_.png,data\png_masks\96_train_0_.png,0
+33_train_0_.png,data\png_images\33_train_0_.png,data\png_masks\33_train_0_.png,0
+76_train_1_.png,data\png_images\76_train_1_.png,data\png_masks\76_train_1_.png,1
+95_train_1_.png,data\png_images\95_train_1_.png,data\png_masks\95_train_1_.png,1
+50_train_0_.png,data\png_images\50_train_0_.png,data\png_masks\50_train_0_.png,0
+93_train_1_.png,data\png_images\93_train_1_.png,data\png_masks\93_train_1_.png,1
+24_train_0_.png,data\png_images\24_train_0_.png,data\png_masks\24_train_0_.png,0

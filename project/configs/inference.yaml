@@ -1,0 +1,4 @@
+config_for_model: "configs/training_unet.yaml"
+image_path: "data/sample/images/example.png"
+save_path: "artifacts/figures/single_prediction.png"
+threshold: 0.5

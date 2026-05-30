@@ -1,0 +1,15 @@
+torch
+torchvision
+timm
+numpy
+pandas
+matplotlib
+Pillow
+PyYAML
+scikit-learn
+tqdm
+pytest
+fastapi
+uvicorn[standard]
+python-multipart
+requests
