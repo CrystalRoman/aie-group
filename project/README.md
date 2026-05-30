@@ -42,13 +42,13 @@ project/
 
 ### Назначение папок
 
-- `configs/` — YAML-конфиги обучения, сервиса и smoke-проверки.
-- `data/` — небольшой sample-поднабор данных для демонстрации и локального запуска.
-- `notebooks/` — ноутбуки EDA, анализа метрик и проверки API.
-- `src/` — основной код проекта.
-- `tests/` — sanity-check и unit-тесты.
-- `artifacts/` — веса моделей, метрики, графики, prediction examples, логи.
-- `scripts/` — вспомогательные скрипты для подготовки окружения, запуска тестов, API и быстрой проверки.
+- `configs/` - YAML-конфиги обучения, сервиса и smoke-проверки.
+- `data/` - небольшой sample-поднабор данных для демонстрации и локального запуска.
+- `notebooks/` - ноутбуки EDA, анализа метрик и проверки API.
+- `src/` - основной код проекта.
+- `tests/` - sanity-check и unit-тесты.
+- `artifacts/` - веса моделей, метрики, графики, prediction examples, логи.
+- `scripts/` - вспомогательные скрипты для подготовки окружения, запуска тестов, API и быстрой проверки.
 
 ---
 
@@ -290,9 +290,9 @@ curl -X POST "http://127.0.0.1:8000/predict" -F "file=@data/png_images/0_test_1_
 
 ### 4.7. Реализованные endpoints
 
-- `GET /health` — проверка, что сервис поднят и какая модель загружена.
-- `POST /predict` — загрузка PNG/JPG рентгеновского снимка и получение предсказанной маски.
-- `POST /reload` — перезагрузка модели и конфига сервиса без полного рестарта процесса.
+- `GET /health` - проверка, что сервис поднят и какая модель загружена.
+- `POST /predict` - загрузка PNG/JPG рентгеновского снимка и получение предсказанной маски.
+- `POST /reload` - перезагрузка модели и конфига сервиса без полного рестарта процесса.
 
 ### 4.8. Как работает threshold в API
 
@@ -340,9 +340,9 @@ data/
 
 ## 6. Ноутбуки проекта
 
-- `notebooks/exp01_eda_pneumothorax_dataset.ipynb` — EDA и проверка данных.
-- `notebooks/exp02_metrics_model_comparison.ipynb` — сравнение моделей по метрикам.
-- `notebooks/service_api_check.ipynb` — проверка `GET /health` и `POST /predict`.
+- `notebooks/exp01_eda_pneumothorax_dataset.ipynb` - EDA и проверка данных.
+- `notebooks/exp02_metrics_model_comparison.ipynb` - сравнение моделей по метрикам.
+- `notebooks/service_api_check.ipynb` - проверка `GET /health` и `POST /predict`.
 
 ---
 
