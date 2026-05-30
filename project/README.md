@@ -314,6 +314,8 @@ curl -X POST "http://127.0.0.1:8000/predict" -F "file=@data/png_images/0_test_1_
 2. поменять `training_config_path` в `configs/service.yaml`;
 3. перезапустить сервис или вызвать `/reload`.
 
+Гугл диск с моделями: `https://drive.google.com/drive/folders/1B14T_MM_XE12I90SwCTHWcHj6Hu5loau?usp=drive_link`
+
 ---
 
 ## 5. Данные
