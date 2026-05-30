@@ -159,7 +159,7 @@ Baseline использовался как отправная точка для 
 |---|---|---:|---:|---|
 | UNet | `configs/training_unet.yaml` | 0.4823 | 0.3454 | Baseline |
 | AttentionUNet | `configs/training_attention_unet.yaml` | 0.5093 | 0.3738 | Улучшение относительно baseline |
-| TransformerUNet | `configs/training_transformer_unet.yaml` | 0.5737 | 0.4298 | Лучшая финальная модель |
+| TransformerUNet (small) | `configs/training_transformer_unet.yaml` | 0.5737 | 0.4298 | Лучшая финальная модель |
 
 ### 5.3. Выбор финальной модели
 
