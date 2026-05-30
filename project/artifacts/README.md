@@ -52,9 +52,9 @@ artifacts/
 
 ### `metrics/`
 Содержит численные результаты обучения и оценки:
-- `history_*.csv` — история обучения по эпохам;
-- `train_summary_*.json` — итоговые метрики, размер выборок, подобранный threshold;
-- `train_split.csv`, `val_split.csv`, `test_split.csv` — сохранённые разбиения.
+- `history_*.csv` - история обучения по эпохам;
+- `train_summary_*.json` - итоговые метрики, размер выборок, подобранный threshold;
+- `train_split.csv`, `val_split.csv`, `test_split.csv` - сохранённые разбиения.
 
 ### `figures/`
 Содержит графики и изображения:
